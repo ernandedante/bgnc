@@ -33,9 +33,11 @@ def killProcess():
         pkill -9 nome-do-programa
         killall -9 -1, mata todos os processos que seu usuario tem permissao
         kill
-
+        kill -9 $(pidof nome_programa)
         xkill
+
     '''
+    
     if entrada[1] == 'all':
         os.system('killall -9 -1')
 
@@ -45,5 +47,11 @@ def killProcess():
     for i in programos_mortos:
         print '-> ' + i
     os.system(kill)
+
+def recuperar():
+    # Recupera barra superior do fedora.
+    com = 'gconftool-2 --recursive-unset /apps/panel'
+    rem = 'rm -rf ~/.gconf/apps/panel'
+    pki = 'pkill gnome-panel'
 
 # killProcess()
